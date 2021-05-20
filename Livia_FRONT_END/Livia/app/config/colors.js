@@ -4,11 +4,11 @@ export default Appearance.getColorScheme() === "light"
   ? {
       gray: "#777777",
       background: "#f1fafc", //#fff7f0 <--old one now its blueish
-      primary: "#51c2d5",
-      primaryTransparent: "rgba(81, 194, 213, .975)", //187, 241, 250
+      primary: "#8080ff",
+      primaryTransparent: "rgba(80, 80, 255, .975)",
       secondary: "#ec4646",
       white: "#fff",
-      blue:"0000D5",
+      blue: "0000D5",
       black: "#000",
       grey: "#DEDEDE",
       backgroundDarken: "rgba(0,0,0,.25)",
@@ -41,8 +41,8 @@ export default Appearance.getColorScheme() === "light"
   : {
       //dark theme----------------------------------------------------------------------------
       background: "#172022", //11181e //121212
-      primary: "#51c1d5",
-      primaryTransparent: "rgba(81, 193, 213, .975)",
+      primary: "#8080ff",
+      primaryTransparent: "rgba(80, 80, 255, .975)",
       secondary: "#ec4646",
       white: "#fff",
       black: "#000",
@@ -51,7 +51,7 @@ export default Appearance.getColorScheme() === "light"
       backgroundDarken: "rgba(0,0,0,.25)",
       backgroundDarkenLess: "rgba(0,0,0,.15)",
       gray: "#777777",
-      blue:"0000D5",
+      blue: "0000D5",
 
       //--------------------------------------
       backbround_icon: "rgba(255,255,255, .87)",

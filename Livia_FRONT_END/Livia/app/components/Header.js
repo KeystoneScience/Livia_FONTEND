@@ -130,7 +130,7 @@ function Header({
           >
             <Image
               style={{ resizeMode: "contain", height: "100%" }}
-              source={require("../assets/logos/FlixPixP_white.png")}
+              source={require("../assets/logos/Untitled-1.png")}
             ></Image>
           </TouchableWithoutFeedback>
         </View>
