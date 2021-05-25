@@ -15,7 +15,7 @@ export default function AutoExpandingTextInput(props) {
       onContentSizeChange={(event) => {
         setHeight(event.nativeEvent.contentSize.height);
       }}
-      style={[props.style, { height: Math.min(Math.max(50, height), 400) }]}
+      style={[props.style, { height: Math.min(Math.max(20, height), 400) }]}
       value={text}
     />
   );

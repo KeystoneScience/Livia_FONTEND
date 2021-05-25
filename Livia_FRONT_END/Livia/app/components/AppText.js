@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -11,7 +11,7 @@ import i18n from "i18n-js";
 import translate from "../config/translate";
 
 var modifiedStyle = {};
-function AppText({ children, style = false, description = "false" }) {
+function AppText({ children, style = false, numLines = false }) {
   if (style) {
     modifiedStyle = JSON.parse(JSON.stringify(style));
     if (Platform.OS === "ios") {
@@ -25,11 +25,25 @@ function AppText({ children, style = false, description = "false" }) {
   } else {
     modifiedStyle = styles.text;
   }
-  if (description === "coupon extra") {
+
+  if (numLines > 0) {
+    const startingSize = modifiedStyle
+      ? modifiedStyle.fontSize
+        ? modifiedStyle.fontSize
+        : 23
+      : 23;
+    const [currentFont, setCurrentFont] = useState(startingSize);
     return (
       <Text
-        numberOfLines={4}
+        numberOfLines={numLines}
         adjustsFontSizeToFit
+        style={[styles.groupName, { fontSize: currentFont }]}
+        onTextLayout={(e) => {
+          const { lines } = e.nativeEvent;
+          if (lines.length > 1) {
+            setCurrentFont(currentFont - 1);
+          }
+        }}
         style={[styles.text, modifiedStyle]}
       >
         {children}

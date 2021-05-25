@@ -46,7 +46,14 @@ export default function Message({ picture, username, message }) {
         <AppText style={{ fontSize: 17, fontWeight: "600" }}>
           {username}
         </AppText>
-        <AppText style={{ fontSize: 15 }}>{message}</AppText>
+        <AppText
+          style={{
+            fontSize: 15,
+            color: message[0] === ">" ? "#789922" : colors.primaryText,
+          }}
+        >
+          {message}
+        </AppText>
       </View>
     </View>
   );

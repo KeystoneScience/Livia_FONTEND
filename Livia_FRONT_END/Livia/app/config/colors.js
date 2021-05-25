@@ -8,7 +8,7 @@ export default Appearance.getColorScheme() === "light"
       primaryTransparent: "rgba(80, 80, 255, .975)",
       secondary: "#ec4646",
       white: "#fff",
-      blue: "0000D5",
+      blue: "#257AFD",
       black: "#000",
       grey: "#DEDEDE",
       backgroundDarken: "rgba(0,0,0,.25)",
@@ -51,7 +51,7 @@ export default Appearance.getColorScheme() === "light"
       backgroundDarken: "rgba(0,0,0,.25)",
       backgroundDarkenLess: "rgba(0,0,0,.15)",
       gray: "#777777",
-      blue: "0000D5",
+      blue: "#257AFD",
 
       //--------------------------------------
       backbround_icon: "rgba(255,255,255, .87)",

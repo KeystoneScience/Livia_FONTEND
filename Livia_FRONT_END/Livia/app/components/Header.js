@@ -8,6 +8,7 @@ import {
   Alert,
   Platform,
 } from "react-native";
+import UserAvatar from "react-native-user-avatar";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import colors from "../config/colors";
@@ -17,20 +18,32 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import cache from "../utility/cache";
 import i18n from "i18n-js";
 import * as Haptics from "expo-haptics";
+
+var colorArray = [
+  colors.secondary,
+  colors.primary,
+  "#2FE079",
+  "#73B758",
+  "#7C57E0",
+  "#5A89F8",
+
+  "#D88645",
+  "#F5D647",
+];
+
 function Header({
   backVisible = false,
-  plusVisible = false,
-  rankVisible = false,
-  rankNotificaiton = false,
-  groupInfoVisble = false,
+  userProfileVisible = false,
   pifView = false,
+  searchVisible = false,
+  onSearchPress,
   onHeartPress,
-  onPlusPress,
   onBackPress,
-  onRankPress,
-  onGroupInfoPress,
-  logoVisible,
+  userProfilePress,
 }) {
+  const name =
+    "https://media-exp1.licdn.com/dms/image/C5603AQGG6ldcC3m5Aw/profile-displayphoto-shrink_800_800/0/1602037994612?e=1627516800&v=beta&t=zIABLUVXv0o9zrUXJEy3aQjvSyrWApKpvuSwRU17u2g";
+
   return (
     <View style={{ zIndex: 1 }}>
       <View
@@ -53,45 +66,39 @@ function Header({
             />
           </TouchableOpacity>
         )}
-        {plusVisible && (
+
+        {searchVisible && (
           <TouchableOpacity
             delayPressIn={0}
-            style={{ position: "absolute", right: 15 }}
-            onPress={onPlusPress}
+            style={{ position: "absolute", left: 10 }}
+            onPress={onSearchPress}
           >
-            <AntDesign name="plus" size={24} color={colors.white} />
-          </TouchableOpacity>
-        )}
-        {rankVisible && (
-          <TouchableOpacity
-            delayPressIn={0}
-            style={{ position: "absolute", right: 15 }}
-            onPress={onRankPress}
-          >
-            <FontAwesome name="bar-chart" size={24} color={colors.white} />
-            {rankNotificaiton && (
-              <View
-                style={{
-                  position: "absolute",
-                  borderRadius: 8,
-                  backgroundColor: "#D50000",
-                  width: 15,
-                  height: 15,
-                  top: -5,
-                  right: -5,
-                }}
-              />
-            )}
+            <Ionicons name="search" size={29} color={colors.white} />
           </TouchableOpacity>
         )}
 
-        {groupInfoVisble && (
+        {userProfileVisible && (
           <TouchableOpacity
             delayPressIn={0}
-            style={{ position: "absolute", right: 60 }}
-            onPress={onGroupInfoPress}
+            style={{ position: "absolute", right: 10 }}
+            onPress={userProfilePress}
           >
-            <FontAwesome5 name="user-plus" size={20} color={colors.white} />
+            {name.includes("https://") ? (
+              <Image
+                style={{
+                  height: 40,
+                  width: 40,
+                  borderRadius: 20,
+                }}
+                source={{ uri: name }}
+              />
+            ) : (
+              <UserAvatar
+                size={40}
+                name={name}
+                bgColor={colorArray[name.length % 6]}
+              />
+            )}
           </TouchableOpacity>
         )}
         {pifView && (

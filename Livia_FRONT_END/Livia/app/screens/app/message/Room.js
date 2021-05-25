@@ -5,26 +5,35 @@ import {
   View,
   Modal,
   KeyboardAvoidingView,
+  Dimensions,
+  Image,
 } from "react-native";
 import Header from "../../../components/Header";
 import colors from "../../../config/colors";
 import ChatFooter from "./ChatFooter";
 import Message from "./Message";
 import cache from "../../../utility/cache";
+import { Modalize } from "react-native-modalize";
+import UserInformation from "./UserInformation";
+
 // import { useIsFocused } from "@react-navigation/native";
 import i18n from "i18n-js";
+import AppText from "../../../components/AppText";
 var ws;
 
 var lastTimeStamp = "";
 var inChat = true;
 
 export default function Room() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { SenderID: "lol", Message: ">Hey Man" },
+  ]);
   const [shareVisible, setShareVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const groupID = "HAHAHA"; //route.params.groupID;
   var scrollRef = useRef();
   const isFocused = false; //useIsFocused();
+  const modalizeRef = useRef();
 
   async function storeLatestChat(chatID) {
     //   // cache.storeData(
@@ -41,7 +50,7 @@ export default function Room() {
           groupID
       );
     }
-    setWebsocketStates();
+    //setWebsocketStates();
   }, []);
 
   function setWebsocketStates() {
@@ -83,6 +92,7 @@ export default function Room() {
   }
 
   function toUnicode(str) {
+    console.log(str);
     return str
       .split("")
       .map(function (value, index, array) {
@@ -113,10 +123,6 @@ export default function Room() {
     >
       <Header
         backVisible={true}
-        groupInfoVisble={true}
-        onGroupInfoPress={() => {
-          setShareVisible(true);
-        }}
         onBackPress={() => {
           inChat = false;
           ws.close();
@@ -136,7 +142,9 @@ export default function Room() {
         {messages.map((message, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => {}}
+            onPress={() => {
+              modalizeRef.current.open();
+            }}
             style={{ width: "100%" }}
           >
             <Message
@@ -148,6 +156,23 @@ export default function Room() {
         ))}
         <View style={{ padding: 10 }}></View>
       </ScrollView>
+      <Modalize
+        modalHeight={Math.floor(Dimensions.get("screen").height * 0.5)}
+        ref={modalizeRef}
+        handlePosition="inside"
+        modalStyle={{ backgroundColor: colors.fg06 }}
+        childrenStyle={{
+          borderTopLeftRadius: 12,
+          borderTopRightRadius: 12,
+          overflow: "hidden",
+        }}
+      >
+        <UserInformation
+          name="Nate Stone"
+          username="nateasstone"
+          bio="lol man"
+        />
+      </Modalize>
       <View
         style={{
           bottom: 0,
