@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { LogBox, View, StatusBar, AppState, Alert, Text } from "react-native";
+import {
+  LogBox,
+  View,
+  StatusBar,
+  AppState,
+  Alert,
+  Text,
+  StyleSheet,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import OfflineNotice from "./app/components/OfflineNotice";
 import cache from "./app/utility/cache";

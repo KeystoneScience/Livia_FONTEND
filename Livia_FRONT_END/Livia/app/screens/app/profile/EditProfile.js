@@ -6,6 +6,7 @@ import colors from "../../../config/colors";
 import TextInput from "../../../components/TextInput";
 import AutoExpandingTextInput from "../../../components/AutoExpandingTextInput";
 
+
 var colorArray = [
   colors.secondary,
   colors.primary,

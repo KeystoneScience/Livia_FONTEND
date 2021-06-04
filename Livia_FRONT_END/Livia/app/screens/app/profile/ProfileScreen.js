@@ -6,11 +6,16 @@ import { Modalize } from "react-native-modalize";
 import colors from "../../../config/colors";
 import EditProfile from "./EditProfile";
 
-export default function () {
+export default function ({ navigation, route }) {
   const modalizeRef = useRef();
   return (
     <View style={{ flex: 1 }}>
-      <Header backVisible={true} onBackPress={() => {}} />
+      <Header
+        backVisible={true}
+        onBackPress={() => {
+          navigation.navigate("Landing");
+        }}
+      />
       <YourInfo
         name="Nate Stone"
         username="nateasstone"

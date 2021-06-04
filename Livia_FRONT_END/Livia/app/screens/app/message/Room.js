@@ -24,7 +24,7 @@ var ws;
 var lastTimeStamp = "";
 var inChat = true;
 
-export default function Room() {
+export default function Room({ navigation, route }) {
   const [messages, setMessages] = useState([
     { SenderID: "lol", Message: ">Hey Man" },
   ]);
@@ -126,7 +126,7 @@ export default function Room() {
         onBackPress={() => {
           inChat = false;
           ws.close();
-          // navigation.navigate("Swipe");
+          navigation.navigate("Landing");
         }}
       />
       <ScrollView

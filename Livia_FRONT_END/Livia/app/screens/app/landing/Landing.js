@@ -7,7 +7,7 @@ import Header from "../../../components/Header";
 import { Ionicons } from "@expo/vector-icons";
 import Card from "./Card";
 
-export default function () {
+export default function ({ navigation, route }) {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [globalGroups, setGlobalGroups] = React.useState([]);
   const [followingGroups, setFollowingGroups] = React.useState([]);
@@ -18,7 +18,9 @@ export default function () {
         searchVisible={true}
         onSearchPress={() => {}}
         userProfileVisible={true}
-        userProfilePress={() => {}}
+        userProfilePress={() => {
+          navigation.navigate("Profile");
+        }}
       />
       <View style={{ padding: 10, zIndex: 5 }}>
         <SegmentedControl
@@ -47,8 +49,14 @@ export default function () {
               numUsers={5}
               groupName={"Example Group."}
               groupDescription={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, niam, quis nostrud exercitation ullamco laboris nisi ut allor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, niam, quis nostrud exercitation"
               }
+              pressButton={() => {
+                navigation.navigate("Room", {
+                  roomID: "lolHAHA",
+                  name: "Comedy Gold",
+                });
+              }}
             />
             <View style={{ padding: 30 }}></View>
           </ScrollView>
