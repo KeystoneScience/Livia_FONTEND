@@ -5,7 +5,7 @@ import AppText from "../../../components/AppText";
 import colors from "../../../config/colors";
 import TextInput from "../../../components/TextInput";
 import AutoExpandingTextInput from "../../../components/AutoExpandingTextInput";
-
+import * as ImagePicker from "expo-image-picker";
 
 var colorArray = [
   colors.secondary,
@@ -19,6 +19,26 @@ var colorArray = [
 ];
 
 export default function ({ picture, username, name, website, bio }) {
+  const [selectedImage, setSelectedImage] = React.useState(null);
+
+  let openImagePickerAsync = async () => {
+    let permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert("Permission to access camera roll is required!");
+      return;
+    }
+
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+
+    if (pickerResult.cancelled === true) {
+      return;
+    }
+
+    setSelectedImage({ localUri: pickerResult.uri });
+  };
+
   return (
     <View style={{ display: "flex", flexDirection: "column" }}>
       <View
@@ -29,7 +49,11 @@ export default function ({ picture, username, name, website, bio }) {
           alignItems: "center",
         }}
       >
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            openImagePickerAsync();
+          }}
+        >
           {picture ? (
             <Image
               style={{
@@ -47,7 +71,11 @@ export default function ({ picture, username, name, website, bio }) {
             />
           )}
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            openImagePickerAsync();
+          }}
+        >
           <AppText style={{ fontWeight: "500", color: colors.blue }}>
             Change Profile Picture
           </AppText>
