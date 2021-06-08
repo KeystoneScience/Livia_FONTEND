@@ -16,7 +16,9 @@ export default function ({ navigation, route }) {
     <View>
       <Header
         searchVisible={true}
-        onSearchPress={() => {}}
+        onSearchPress={() => {
+          navigation.navigate("Search");
+        }}
         userProfileVisible={true}
         userProfilePress={() => {
           navigation.navigate("Profile");
