@@ -6,6 +6,8 @@ import colors from "../../../config/colors";
 import TextInput from "../../../components/TextInput";
 import AutoExpandingTextInput from "../../../components/AutoExpandingTextInput";
 import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
+import * as ImageManipulator from "expo-image-manipulator";
 
 var colorArray = [
   colors.secondary,
@@ -19,7 +21,7 @@ var colorArray = [
 ];
 
 export default function ({ picture, username, name, website, bio }) {
-  const [selectedImage, setSelectedImage] = React.useState(null);
+  const [selectedImage, setSelectedImage] = React.useState(picture);
 
   let openImagePickerAsync = async () => {
     let permissionResult =
@@ -36,7 +38,32 @@ export default function ({ picture, username, name, website, bio }) {
       return;
     }
 
-    setSelectedImage({ localUri: pickerResult.uri });
+    const smallerSize = Math.min(pickerResult.width, pickerResult.height);
+
+    const cropResult = await ImageManipulator.manipulateAsync(
+      pickerResult.uri,
+      [
+        {
+          crop: {
+            originX: 0,
+            originY: 0,
+            width: smallerSize,
+            height: smallerSize,
+          },
+        },
+      ],
+      { format: "jpeg" }
+    );
+
+    const resizeResult = await ImageManipulator.manipulateAsync(
+      cropResult.uri,
+      [{ resize: { width: 200, height: 200 } }],
+      { format: "jpeg" }
+    );
+    const base64 = await FileSystem.readAsStringAsync(resizeResult.uri, {
+      encoding: "base64",
+    });
+    setSelectedImage({ localUri: resizeResult.uri });
   };
 
   return (
@@ -54,14 +81,18 @@ export default function ({ picture, username, name, website, bio }) {
             openImagePickerAsync();
           }}
         >
-          {picture ? (
+          {selectedImage ? (
             <Image
               style={{
                 height: 100,
                 width: 100,
                 borderRadius: 50,
               }}
-              source={{ uri: picture }}
+              source={
+                selectedImage.localUri
+                  ? { uri: selectedImage.localUri }
+                  : { uri: selectedImage }
+              }
             />
           ) : (
             <UserAvatar
