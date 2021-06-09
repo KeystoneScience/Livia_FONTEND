@@ -6,6 +6,7 @@ import i18n from "i18n-js";
 import Header from "../../../components/Header";
 import { Ionicons } from "@expo/vector-icons";
 import Card from "./Card";
+import Auth from "../auth/Auth";
 
 export default function ({ navigation, route }) {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -24,6 +25,7 @@ export default function ({ navigation, route }) {
           navigation.navigate("Profile");
         }}
       />
+      <Auth />
       <View style={{ padding: 10, zIndex: 5 }}>
         <SegmentedControl
           values={["Global", "Friends"]}
