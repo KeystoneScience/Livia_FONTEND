@@ -48,7 +48,7 @@ function Header({
     <View style={{ zIndex: 1 }}>
       <View
         style={{
-          backgroundColor: colors.fg06,
+          backgroundColor: colors.background,
           height: Constants.statusBarHeight,
         }}
       />
@@ -149,7 +149,7 @@ function Header({
 const styles = StyleSheet.create({
   bar: {
     alignItems: "center",
-    backgroundColor: colors.fg06,
+    backgroundColor: colors.background,
     height: 64,
     flexDirection: "row",
     justifyContent: "center",
