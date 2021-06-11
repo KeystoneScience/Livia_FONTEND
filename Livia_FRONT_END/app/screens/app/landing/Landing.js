@@ -42,10 +42,10 @@ export default function ({ navigation, route }) {
           <ScrollView style={{ height: "100%" }}>
             <Card
               profilePics={[
-                "https://media-exp1.licdn.com/dms/image/C5603AQGG6ldcC3m5Aw/profile-displayphoto-shrink_800_800/0/1602037994612?e=1627516800&v=beta&t=zIABLUVXv0o9zrUXJEy3aQjvSyrWApKpvuSwRU17u2g",
-                "https://media-exp1.licdn.com/dms/image/C5603AQFMw-EKLMHeCA/profile-displayphoto-shrink_800_800/0/1580601757924?e=1627516800&v=beta&t=co1NWbZvrz3DaG1eqW9GXA0tni8R9lOtKUM5gh3JtUs",
-                "https://media-exp1.licdn.com/dms/image/C5603AQEzW6xEzxsbxw/profile-displayphoto-shrink_800_800/0/1598554057413?e=1627516800&v=beta&t=WmObrLKbGNGBaDVsjDw8myIZdEDx_EM7d_GywEqUPf0",
-                "https://media-exp1.licdn.com/dms/image/C5635AQE5CbKsR4rAFg/profile-framedphoto-shrink_800_800/0/1615460226167?e=1621818000&v=beta&t=LaY2b85I8dZu-2NbiE9ZEFyJqIXb8Pf5Q_RUH0shgww",
+                "https://media-exp3.licdn.com/dms/image/C5603AQEUDjnt1rKu6w/profile-displayphoto-shrink_400_400/0/1583731966978?e=1628726400&v=beta&t=jgpZ6xjV541vSNzO4yx0OJ_g7Vuo18H9Do2NZvT2beQ",
+                "https://media-exp3.licdn.com/dms/image/C4E03AQGPWYc9UEBVZw/profile-displayphoto-shrink_400_400/0/1613531143361?e=1628726400&v=beta&t=UyFBtQSpj2tWfqYL4P8vBZzphm8of0v26s1-58RSIUY",
+                "https://scontent-den4-1.xx.fbcdn.net/v/t1.6435-1/p480x480/50155029_2111599115554156_3268810862076362752_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=7206a8&_nc_ohc=oLgl_i5UrPoAX-CZyO-&_nc_ht=scontent-den4-1.xx&tp=6&oh=47a3791b0800a452472e1a66eda47eca&oe=60C7B3D7",
+                "https://media-exp3.licdn.com/dms/image/C5635AQE5CbKsR4rAFg/profile-framedphoto-shrink_800_800/0/1615460226167?e=1623488400&v=beta&t=rHB7k28MqEx9RSuSFrB18pr_OAwtb70FUddzkNn4_P0",
                 "Alex Stone",
                 "John Man",
                 "lol",
