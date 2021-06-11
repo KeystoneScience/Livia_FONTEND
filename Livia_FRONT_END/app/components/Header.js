@@ -48,7 +48,7 @@ function Header({
     <View style={{ zIndex: 1 }}>
       <View
         style={{
-          backgroundColor: colors.primaryTransparent,
+          backgroundColor: colors.fg06,
           height: Constants.statusBarHeight,
         }}
       />
@@ -62,7 +62,7 @@ function Header({
             <Ionicons
               name="chevron-back-outline"
               size={29}
-              color={colors.white}
+              color={colors.primary}
             />
           </TouchableOpacity>
         )}
@@ -73,7 +73,7 @@ function Header({
             style={{ position: "absolute", left: 10 }}
             onPress={onSearchPress}
           >
-            <Ionicons name="search" size={29} color={colors.white} />
+            <Ionicons name="search" size={29} color={colors.primary} />
           </TouchableOpacity>
         )}
 
@@ -107,7 +107,7 @@ function Header({
             style={{ position: "absolute", right: 105 }}
             onPress={onHeartPress}
           >
-            <AntDesign name="heart" size={20} color={colors.white} />
+            <AntDesign name="heart" size={20} color={colors.primary} />
           </TouchableOpacity>
         )}
         <View pointerEvents="box-none" style={{ height: "100%", padding: 11 }}>
@@ -136,7 +136,7 @@ function Header({
             }}
           >
             <Image
-              style={{ resizeMode: "contain", height: "100%" }}
+              style={{ resizeMode: "contain", height: "100%", tintColor: colors.primary }}
               source={require("../assets/logos/Untitled-1.png")}
             ></Image>
           </TouchableWithoutFeedback>
@@ -149,7 +149,7 @@ function Header({
 const styles = StyleSheet.create({
   bar: {
     alignItems: "center",
-    backgroundColor: colors.primaryTransparent,
+    backgroundColor: colors.fg06,
     height: 64,
     flexDirection: "row",
     justifyContent: "center",
