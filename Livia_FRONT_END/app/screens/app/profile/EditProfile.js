@@ -57,12 +57,13 @@ export default function ({ picture, username, name, website, bio }) {
 
     const resizeResult = await ImageManipulator.manipulateAsync(
       cropResult.uri,
-      [{ resize: { width: 200, height: 200 } }],
+      [{ resize: { width: 500, height: 500 } }],
       { format: "jpeg" }
     );
     const base64 = await FileSystem.readAsStringAsync(resizeResult.uri, {
       encoding: "base64",
     });
+    console.log(base64.length)
     setSelectedImage({ localUri: resizeResult.uri });
   };
 
