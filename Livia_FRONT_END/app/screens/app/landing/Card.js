@@ -172,7 +172,6 @@ function UsersSection({ profilePics, numUsers }) {
           display: "flex",
           flexDirection: "row",
           margin: 4,
-          alignItems: "center",
         }}
       >
         <Ionicons
