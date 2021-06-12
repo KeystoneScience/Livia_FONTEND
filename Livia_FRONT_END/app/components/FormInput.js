@@ -1,22 +1,38 @@
 import React from "react";
-import { View, TextInput, StyleSheet, Dimensions } from "react-native";
+import { View, TextInput, StyleSheet, Dimensions, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import colors from "../config/colors";
 
-const FormInput = ({ labelValue, placeholderText, iconType, ...rest }) => {
+const FormInput = ({
+  labelValue,
+  placeholderText,
+  iconType,
+  error,
+  ...rest
+}) => {
   return (
-    <View style={styles.inputContainer}>
-      <View style={styles.iconStyle}>
-        <Ionicons name={iconType} size={25} color="#666" />
+    <>
+      <View
+        style={
+          error
+            ? [styles.inputContainer, { borderColor: colors.secondary }]
+            : styles.inputContainer
+        }
+      >
+        <View style={styles.iconStyle}>
+          <Ionicons name={iconType} size={25} color="#666" />
+        </View>
+        <TextInput
+          value={labelValue}
+          style={styles.input}
+          numberOfLines={1}
+          placeholder={placeholderText}
+          placeholderTextColor={error ? colors.secondary : "#666"}
+          {...rest}
+        />
       </View>
-      <TextInput
-        value={labelValue}
-        style={styles.input}
-        numberOfLines={1}
-        placeholder={placeholderText}
-        placeholderTextColor="#666"
-        {...rest}
-      />
-    </View>
+      {error ? <Text style={styles.errorInput}>{error}</Text> : null}
+    </>
   );
 };
 
@@ -24,13 +40,12 @@ export default FormInput;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginTop: 5,
     marginBottom: 10,
     width: "100%",
     height: Dimensions.get("window").height / 15,
-    borderColor: "#ccc",
-    borderRadius: 3,
-    borderWidth: 1,
+    borderColor: "transparent",
+    borderRadius: 5,
+    borderWidth: 2,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
@@ -48,19 +63,14 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     fontSize: 16,
-    fontFamily: "Lato-Regular",
     color: "#333",
     justifyContent: "center",
     alignItems: "center",
   },
-  inputField: {
-    padding: 10,
-    marginTop: 5,
+  errorInput: {
+    color: colors.secondary,
+    textAlign: "left",
+    width: "100%",
     marginBottom: 10,
-    width: Dimensions.get("window").width / 1.5,
-    height: Dimensions.get("window").height / 15,
-    fontSize: 16,
-    borderRadius: 8,
-    borderWidth: 1,
   },
 });
